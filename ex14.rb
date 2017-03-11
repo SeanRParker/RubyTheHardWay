@@ -1,5 +1,6 @@
-user_name = ARGV.first # gets the first argument
-prompt = '> '
+# user_name = ARGV.first # gets the first argument, when you're calling just one.
+user_name, computer = ARGV
+prompt = '>> '
 
 puts "Hi #{user_name}."
 puts "I'd like to ask you a few questions."
@@ -13,7 +14,9 @@ lives = $stdin.gets.chomp
 
 # a comma for puts is like using it twice
 puts "What kind of computer do you have? ", prompt
-computer = $stdin.gets.chomp
+# Commenting out since the ARGV is now the variable.
+# computer = $stdin.gets.chomp
+
 
 
 puts """
