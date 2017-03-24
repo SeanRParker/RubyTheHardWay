@@ -20,11 +20,19 @@ end
 
 puts "Let's do some math with those functions!"
 
+# Calls the add function with two parameters (30 and 5) and assigns the return value to variable 'age'
 age = add(30, 5)
+
+# Calls subtract function with two parameters and assigns the return value to the variable 'height'
 height = subtract(78, 4)
+
+# Calls the multiply function with two parameter and assigns the return value to the variable 'weight'
 weight = multiply(90, 2)
+
+# Calls the divide function with two parameters and assigns the return value to the variable 'iq'
 iq = divide(100,2)
 
+# Interpolates the four stored variable values into a string.
 puts "Age: #{age}, Height: #{height}, Weight: #{weight}, IQ: #{iq}"
 
 # A puzzle here for the extra credit, type it in anyway.
