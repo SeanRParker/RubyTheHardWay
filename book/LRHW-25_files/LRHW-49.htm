@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://learnrubythehardway.org/book/ex49.html -->
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  
+  
+  <title>Learn Ruby the Hard Way - Read for Free</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link href="https://www.google-analytics.com/" rel="dns-prefetch">
+  <link href="https://ajax.googleapis.com/" rel="dns-prefetch">
+
+  <link href="./LRHW-49_files/css" rel="stylesheet" type="text/css">
+  <link href="./LRHW-49_files/style.min.css" rel="stylesheet">
+  <!-- http://www.socicon.com -->
+  <link href="./LRHW-49_files/icons.css" rel="stylesheet">
+
+  
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/">
+<title>Exercise 49: Making Sentences</title>
+
+<style>@media print {#ghostery-purple-box {display:none !important}}</style><style media="print" class="jx_ui_StyleSheet" __jx__id="___$_2" type="text/css">.zopim { display: none !important }</style></head>
+
+<body class="baseline-grid-off book-site" id="top" cz-shortcut-listen="true"><div class="zopim" __jx__id="___$_60 ___$_60" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; padding: 0px; border: 0px; background: transparent; overflow: hidden; position: fixed; z-index: 16000002; width: 180px; height: 30px; right: 10px; bottom: 0px; display: none;"><iframe frameborder="0" src="./LRHW-49_files/saved_resource.html" style="background-color: transparent; vertical-align: text-bottom; position: relative; width: 100%; height: 100%; min-width: 100%; min-height: 100%; max-width: 100%; max-height: 100%; margin: 0px; overflow: hidden; display: block;"></iframe></div><div class="zopim" __jx__id="___$_4 ___$_4" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; padding: 0px; border: 0px; background: transparent; overflow: hidden; position: fixed; z-index: 16000001; right: 15px; bottom: 0px; border-top-left-radius: 5px; border-top-right-radius: 5px; display: none; width: 350px; height: 450px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 3px 2px;"><iframe frameborder="0" src="./LRHW-49_files/saved_resource(1).html" style="background-color: transparent; vertical-align: text-bottom; position: relative; width: 100%; height: 100%; min-width: 100%; min-height: 100%; max-width: 100%; max-height: 100%; margin: 0px; overflow: hidden; display: block;"></iframe></div>
+
+
+  
+  
+<div data-scrollmagic-pin-spacer="" class="scrollmagic-pin-spacer" style="top: auto; left: auto; bottom: auto; right: auto; margin: 0px; display: block; position: absolute; box-sizing: content-box; width: 100%; height: 107px;"><header class="header" role="banner" style="position: absolute; margin: auto; top: auto; left: auto; bottom: auto; right: auto; box-sizing: border-box;">
+  <nav class="navbar navbar-full nav-brand-family">
+    <div class="row middle-xs">
+      <ul class="brand-links show-md col-xs-3 col-sm-10 bare">
+        <li><a href="http://learncodethehardway.org/" class="waves-effect">Learn:</a></li>
+        
+        <li><a href="http://learncodethehardway.org/python/" class="waves-effect">Python</a></li>
+        
+        <li><a href="http://learncodethehardway.org/ruby/" class="waves-effect active">Ruby</a></li>
+        
+        <li><a href="http://learncodethehardway.org/more-python/" class="waves-effect">More Python</a></li>
+        
+        <li><a href="http://learncodethehardway.org/c/" class="waves-effect">C</a></li>
+        
+        <li><a href="http://learncodethehardway.org/sql/" class="waves-effect">SQL</a></li>
+        
+        <li><a href="http://learncodethehardway.org/javascript/" class="waves-effect">Javascript</a></li>
+        
+        <li><a href="http://learncodethehardway.org/unix/" class="waves-effect">Unix</a></li>
+        
+        <li><a href="http://learncodethehardway.org/regex/" class="waves-effect">RegEx</a></li>
+        
+        <li><a href="http://www.learndesignthehardway.com/" class="waves-effect">Design</a></li>
+        
+      </ul>
+      <ul class="brand-links hide-md col-xs-3 col-sm-10 bare">
+        <li><a href="http://learncodethehardway.org/" class="waves-effect">LCTHW</a></li>
+      </ul>
+      
+      <ul class="site-meta col-xs-9 col-sm-2 end-xs bare">
+        <li><a href="https://shop.learncodethehardway.org/access/reactivate/" class="waves-effect"><i class="icon icon-user"></i> Login</a></li>
+      </ul>
+      
+    </div>
+  </nav>
+  
+  <nav class="navbar navbar-full nav-main" role="navigation">
+    <div class="row between-xs center-xs middle-xs bare">
+      <div class="col-xs-4 start-xs bare">
+        <a href="https://learnrubythehardway.org/book/ex49.html#" class="no-underline nav-trigger waves-effect" id="toc"><div class="transformer hamburcloser">
+          <div class="bar bar-t"></div>
+          <div class="bar bar-m-a"></div>
+          <div class="bar bar-m-b"></div>
+          <div class="bar bar-b"></div>
+        </div><span class="nav-trigger_text show-sm-inline">Contents</span></a>
+      </div>
+      <div class="col-xs-4"><strong>&nbsp;</strong></div>
+      <div class="col-xs-4 end-xs bare">
+        <a href="https://helpthw.zendesk.com/hc/en-us" class="no-underline nav-trigger waves-effect" id="help"><div class="transformer questioncloser">
+          <div class="icon-question-mark"></div>
+        </div><span class="nav-trigger_text show-sm-inline">Help</span></a>
+      </div>
+    </div>
+  </nav>
+  
+</header></div>
+
+
+
+
+  <div class="masthead ruby-background" style="background-image: url(&#39;/images/pattern-ruby.svg&#39;)">
+    <img src="./LRHW-49_files/logo-ruby.svg" alt="Learn Ruby The Hard Way" class="logo">
+  </div>
+
+  <div class="wrapper">
+    <aside class="sidebar sidebar-left" role="complementary">
+      <nav class="side-nav-container">
+        <ol class="table-of-contents">
+          <h3>Table of Contents</h3>
+            <li><a href="https://learnrubythehardway.org/book/preface.html">Preface</a></li>
+            <li><a href="https://learnrubythehardway.org/book/intro.html">The Hard Way Is Easier</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex0.html">Ex0: The Setup</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex1.html">Ex1: A Good First Program</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex2.html">Ex2: Comments And Pound Characters</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex3.html">Ex3: Numbers And Math</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex4.html">Ex4: Variables And Names</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex5.html">Ex5: More Variables And Printing</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex6.html">Ex6: Strings And Text</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex7.html">Ex7: More Printing</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex8.html">Ex8: Printing, Printing</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex9.html">Ex9: Printing, Printing, Printing</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex10.html">Ex10: What Was That?</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex11.html">Ex11: Asking Questions</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex12.html">Ex12: Prompting People</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex13.html">Ex13: Parameters, Unpacking, Variables</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex14.html">Ex14: Prompting And Passing</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex15.html">Ex15: Reading Files</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex16.html">Ex16: Reading And Writing Files</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex17.html">Ex17: More Files</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex18.html">Ex18: Names, Variables, Code, Functions</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex19.html">Ex19: Functions And Variables</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex20.html">Ex20: Functions And Files</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex21.html">Ex21: Functions Can Return Something</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex22.html">Ex22: What Do You Know So Far?</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex23.html">Ex23: Read Some Code</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex24.html">Ex24: More Practice</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex25.html">Ex25: Even More Practice</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex26.html">Ex26: Congratulations, Take A Test!</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex27.html">Ex27: Memorizing Logic</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex28.html">Ex28: Boolean Practice</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex29.html">Ex29: What If</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex30.html">Ex30: Else And If</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex31.html">Ex31: Making Decisions</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex32.html">Ex32: Loops And Lists</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex33.html">Ex33: While Loops</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex34.html">Ex34: Accessing Elements Of Lists</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex35.html">Ex35: Branches and Functions</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex36.html">Ex36: Designing and Debugging</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex37.html">Ex37: Symbol Review</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex38.html">Ex38: Doing Things To Lists</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex39.html">Ex39: Dictionaries, Oh Lovely Dictionaries</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex40.html">Ex40: Modules, Classes, And Objects</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex41.html">Ex41: Learning To Speak Object Oriented</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex42.html">Ex42: Is-A, Has-A, Objects, and Classes</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex43.html">Ex43: Gothons From Planet Percal #25</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex44.html">Ex44: Inheritance Vs. Composition</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex45.html">Ex45: You Make A Game</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex46.html">Ex46: A Project Skeleton</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex47.html">Ex47: Automated Testing</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex48.html">Ex48: Advanced User Input</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex49.html">Ex49: Making Sentences</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex50.html">Ex50: Your First Website</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex51.html">Ex51: Getting Input From A Browser</a></li>
+            <li><a href="https://learnrubythehardway.org/book/ex52.html">Ex52: The Start Of Your Web Game</a></li>
+            <li><a href="https://learnrubythehardway.org/book/advice.html">Advice From An Old Programmer</a></li>
+            <li><a href="https://learnrubythehardway.org/book/next.html">Next Steps</a></li>
+            <li><a href="https://learnrubythehardway.org/book/appendixa.html">Appendix A: Command Line Crash Course</a></li>
+        </ol>
+        <ul class="site-links">
+          <h3>Learn the Hard Way</h3>
+          <li><a href="https://learnrubythehardway.org/book/ex49.html#" class="waves-effect"><i class="icon-information"></i> About LPTHW</a></li>
+          <li><a href="https://learnrubythehardway.org/book/ex49.html#" class="waves-effect"><i class="icon-first-aid"></i> Help &amp; Support</a></li>
+          <li><a href="https://learnrubythehardway.org/book/ex49.html#" class="waves-effect"><i class="icon-power-1"></i> Follow us on Twitter</a></li>
+        </ul>
+      </nav>
+      <div class="colophon text-center">
+        <div class="intro">
+          <p class="bare-bottom" id="p0">
+            The type for this book is set in 18px / 1.5
+            <a href="https://www.google.com/fonts/specimen/Source+Serif+Pro">Adobe Serif</a>,
+            <a href="https://www.google.com/fonts/specimen/Source+Sans+Pro">Sans</a>, and
+            <a href="https://www.google.com/fonts/specimen/Source+Code+Pro">Code</a>.
+          </p>
+        </div>
+        <div class="printers-mark">
+          <div class="inscription">Docendo <i class="icon-repeat"></i> Discimus</div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="overlay"></div>
+
+    <main class="main ruby" role="main">
+      <div class="main-container row center-xs">
+    <div class="col-xs-11 col-sm-10 col-md-9 col-lg-8">
+
+        <div class="content">
+            <!--- RST STARTS -->
+            <h1 class="title">Exercise 49: Making Sentences</h1>
+            <p id="p1">What we should be able to get from our little game lexicon scanner is an array that looks like this:</p>
+<div class="highlight"><pre><span></span><a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-1"></a><span class="gp">&gt;&gt; </span><span class="nb">require</span> <span class="s1">'./ex48/lexicon.rb'</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-2"></a><span class="go">=&gt; true</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-3"></a><span class="gp">&gt;&gt; </span><span class="no">Lexicon</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="s2">"go north"</span><span class="p">)</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-4"></a><span class="go">=&gt; [["verb", "go"], ["direction", "north"]]</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-5"></a><span class="gp">&gt;&gt; </span><span class="no">Lexicon</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="s2">"kill the princess"</span><span class="p">)</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-6"></a><span class="go">=&gt; [["verb", "kill"], ["stop", "the"], ["noun", "princess"]]</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-7"></a><span class="gp">&gt;&gt; </span><span class="no">Lexicon</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="s2">"eat the bear"</span><span class="p">)</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-8"></a><span class="go">=&gt; [["verb", "eat"], ["stop", "the"], ["noun", "bear"]]</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-9"></a><span class="gp">&gt;&gt; </span><span class="no">Lexicon</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="s2">"open the door and smack the bear in the nose"</span><span class="p">)</span>
+<a name="ruby--ex49_rbcon.rb-idio-irb-pyg.html-10"></a><span class="go">=&gt; [["error", "open"], ["stop", "the"], ["error", "door"], ["error", "and"], ["error", "smack"], ["stop", "the"], ["noun", "bear"], ["stop", "in"], ["stop", "the"], ["error", "nose"]]</span>
+</pre></div><p id="p2">Now let us turn this into something the game can work with, which would be some kind of <tt class="docutils literal">Sentence</tt> class.</p>
+<p id="p3">If you remember grade school, a sentence can be a simple structure like:</p>
+<blockquote>
+Subject Verb Object</blockquote>
+<p id="p4">Obviously it gets more complex than that, and you probably did many days of annoying sentence graphs for English class.  What we want is to turn the above arrays of tuples into a nice Sentence object that has subject, verb, and object.</p>
+<div class="section" id="match-and-peek">
+<h1>Match and Peek</h1>
+<p id="p5">To do this we need four tools:</p>
+<ol class="arabic simple">
+<li>A way to loop through the array of scanned words.  That's easy.</li>
+<li>A way to "match" different types of tuples that we expect in our Subject Verb Object setup.</li>
+<li>A way to "peek" at a potential tuple so we can make some decisions.</li>
+<li>A way to "skip" things we do not care about, like stop words.</li>
+<li>A Sentence object to put the results in.</li>
+</ol>
+<p id="p6">We will be putting these functions  in a file named <tt class="docutils literal">./lib/ex48/parser.rb</tt> in order to test it.  We use the <tt class="docutils literal">peek</tt> function to say look at the next element in our tuple array, and then match to take one off and work with it.</p>
+</div>
+<div class="section" id="the-sentence-grammar">
+<h1>The Sentence Grammar</h1>
+<p id="p7">Before you can write the code you need to understand how a basic English sentence grammar works.  In our parser we want to produce a <tt class="docutils literal">Sentence</tt> object that has three attributes:</p>
+<dl class="docutils">
+<dt>Sentence.subject</dt>
+<dd>This is the subject of any sentence, but could default to "player" most of the time since a sentence of, "run north" is implying "player run north".  This will be a noun.</dd>
+<dt>Sentence.verb</dt>
+<dd>This is the action of the sentence. In "run north" it would be "run".  This will be a verb.</dd>
+<dt>Sentence.object</dt>
+<dd>This is another noun that refers to what the verb is done on.  In our game we separate out directions which would also be objects.  In "run north" the word "north" would be the object.  In "hit bear" the word "bear" would be the object.</dd>
+</dl>
+<p id="p8">Our parser then has to use the functions we described and given a scanned sentence, convert it into an <tt class="docutils literal">Array</tt> of <tt class="docutils literal">Sentence</tt> objects to match the input.</p>
+</div>
+<div class="section" id="a-word-on-exceptions">
+<h1>A Word On Exceptions</h1>
+<p id="p9">You briefly learned about exceptions but not how to raise them.  This code demonstrates how to do that with the <tt class="docutils literal">ParserError</tt> at the top.  Notice that it uses classes to give it the type of <tt class="docutils literal">Exception</tt>.  Also notice the use of the <tt class="docutils literal">raise</tt> keyword to raise the exception.</p>
+<p id="p10">In your tests, you will want to work with these exceptions, which I'll show you how to do.</p>
+</div>
+<div class="section" id="the-parser-code">
+<h1>The Parser Code</h1>
+<p id="p11">If you want an extra challenge, stop right now and try to write this based on just my description.  If you get stuck you can come back and see how I did it, but trying to implement the parser yourself is good practice.  I will now walk through the code so you can enter it into your <tt class="docutils literal">ex48/parser.rb</tt>.  We start the parser with the exception we need for a parsing error:</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">class</span> <span class="nc">ParserError</span> <span class="o">&lt;</span> <span class="no">Exception</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table><p id="p12">This is how you make your own <tt class="docutils literal">ParserError</tt> exception class you can throw.  Next we need the <tt class="docutils literal">Sentence</tt> object we'll create:</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">class</span> <span class="nc">Sentence</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a>
+<a name="ruby--ex48--parser.rb-idio.html-3"></a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">verb</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-4"></a>        <span class="c1"># remember we take ['noun','princess'] pairs and convert them</span>
+<a name="ruby--ex48--parser.rb-idio.html-5"></a>        <span class="vi">@subject</span> <span class="o">=</span> <span class="n">subject</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+<a name="ruby--ex48--parser.rb-idio.html-6"></a>        <span class="vi">@verb</span> <span class="o">=</span> <span class="n">verb</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+<a name="ruby--ex48--parser.rb-idio.html-7"></a>        <span class="vi">@object</span> <span class="o">=</span> <span class="n">obj</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+<a name="ruby--ex48--parser.rb-idio.html-8"></a>    <span class="k">end</span>
+<a name="ruby--ex48--parser.rb-idio.html-9"></a>
+<a name="ruby--ex48--parser.rb-idio.html-10"></a>    <span class="kp">attr_reader</span> <span class="ss">:subject</span>
+<a name="ruby--ex48--parser.rb-idio.html-11"></a>    <span class="kp">attr_reader</span> <span class="ss">:verb</span>
+<a name="ruby--ex48--parser.rb-idio.html-12"></a>    <span class="kp">attr_reader</span> <span class="ss">:object</span>
+<a name="ruby--ex48--parser.rb-idio.html-13"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table><p id="p13">There's nothing special about this code so far. You're just making simple classes.</p>
+<p id="p14">In our description of the problem we need a function that can peek at a list of words and return what type of word it is:</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a>    <span class="k">if</span> <span class="n">word_list</span>
+<a name="ruby--ex48--parser.rb-idio.html-3"></a>        <span class="n">word</span> <span class="o">=</span> <span class="n">word_list</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+<a name="ruby--ex48--parser.rb-idio.html-4"></a>        <span class="k">return</span> <span class="n">word</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+<a name="ruby--ex48--parser.rb-idio.html-5"></a>    <span class="k">else</span>
+<a name="ruby--ex48--parser.rb-idio.html-6"></a>        <span class="k">return</span> <span class="kp">nil</span>
+<a name="ruby--ex48--parser.rb-idio.html-7"></a>    <span class="k">end</span>
+<a name="ruby--ex48--parser.rb-idio.html-8"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table><p id="p15">We need this function because we'll have to make decisions about what kind of sentence we're dealing with based on what the next word is, and then we can call another function to consume that word and carry on.</p>
+<p id="p16">To consume a word we use a the <tt class="docutils literal">match</tt> function, which confirms that the expected word is the right type, takes it off the list, and returns the word.</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="n">expecting</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a>    <span class="k">if</span> <span class="n">word_list</span>
+<a name="ruby--ex48--parser.rb-idio.html-3"></a>        <span class="n">word</span> <span class="o">=</span> <span class="n">word_list</span><span class="o">.</span><span class="n">shift</span>
+<a name="ruby--ex48--parser.rb-idio.html-4"></a>
+<a name="ruby--ex48--parser.rb-idio.html-5"></a>        <span class="k">if</span> <span class="n">word</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="n">expecting</span>
+<a name="ruby--ex48--parser.rb-idio.html-6"></a>            <span class="k">return</span> <span class="n">word</span>
+<a name="ruby--ex48--parser.rb-idio.html-7"></a>        <span class="k">else</span>
+<a name="ruby--ex48--parser.rb-idio.html-8"></a>            <span class="k">return</span> <span class="kp">nil</span>
+<a name="ruby--ex48--parser.rb-idio.html-9"></a>        <span class="k">end</span>
+<a name="ruby--ex48--parser.rb-idio.html-10"></a>    <span class="k">else</span>
+<a name="ruby--ex48--parser.rb-idio.html-11"></a>        <span class="k">return</span> <span class="kp">nil</span>
+<a name="ruby--ex48--parser.rb-idio.html-12"></a>    <span class="k">end</span>
+<a name="ruby--ex48--parser.rb-idio.html-13"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table><p id="p17">Again, fairly simple but make sure you understand this code but also <em>why</em> I'm doing it this way.  I need to peek at words in the list to decide what kind of sentence I'm dealing with, and then I need to match those words to create my <tt class="docutils literal">Sentence</tt>.</p>
+<p id="p18">The last thing I need is a way to skip words that aren't useful to the <tt class="docutils literal">Sentence</tt>.  These are the words labeled "stop words" (type 'stop') that are words like "the", "and", and "a".</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">def</span> <span class="nf">skip</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="n">word_type</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a>    <span class="k">while</span> <span class="n">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span> <span class="o">==</span> <span class="n">word_type</span>
+<a name="ruby--ex48--parser.rb-idio.html-3"></a>        <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="n">word_type</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-4"></a>    <span class="k">end</span>
+<a name="ruby--ex48--parser.rb-idio.html-5"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table><p id="p19">Remember that <tt class="docutils literal">skip</tt> doesn't skip one word, it skips as many words of that type as it finds.  This makes it so if someone types, "scream at the bear" you get "scream" and "bear."</p>
+<p id="p20">That's our basic set of parsing functions, and with that we can actually parse just about any text we want.  Our parser is very simple though, so the remaining functions are short.</p>
+<p id="p21">First we can handle parsing a verb:</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">def</span> <span class="nf">parse_verb</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a>    <span class="n">skip</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'stop'</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-3"></a>
+<a name="ruby--ex48--parser.rb-idio.html-4"></a>    <span class="k">if</span> <span class="n">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'verb'</span>
+<a name="ruby--ex48--parser.rb-idio.html-5"></a>        <span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'verb'</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-6"></a>    <span class="k">else</span>
+<a name="ruby--ex48--parser.rb-idio.html-7"></a>        <span class="k">raise</span> <span class="no">ParserError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"Expected a verb next."</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-8"></a>    <span class="k">end</span>
+<a name="ruby--ex48--parser.rb-idio.html-9"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table><p id="p22">We skip any stop words, then peek ahead to make sure the next word is a "verb" type.  If it's not then raise the <tt class="docutils literal">ParserError</tt> to say why.  If it is a "verb" then match it, which takes it off the list.  A similar function handles sentence objects:</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">def</span> <span class="nf">parse_object</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a>    <span class="n">skip</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'stop'</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-3"></a>    <span class="n">next_word</span> <span class="o">=</span> <span class="n">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-4"></a>
+<a name="ruby--ex48--parser.rb-idio.html-5"></a>    <span class="k">if</span> <span class="n">next_word</span> <span class="o">==</span> <span class="s1">'noun'</span>
+<a name="ruby--ex48--parser.rb-idio.html-6"></a>        <span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'noun'</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-7"></a>    <span class="k">elsif</span> <span class="n">next_word</span> <span class="o">==</span> <span class="s1">'direction'</span>
+<a name="ruby--ex48--parser.rb-idio.html-8"></a>        <span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'direction'</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-9"></a>    <span class="k">else</span>
+<a name="ruby--ex48--parser.rb-idio.html-10"></a>        <span class="k">raise</span> <span class="no">ParserError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"Expected a noun or direction next."</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-11"></a>    <span class="k">end</span>
+<a name="ruby--ex48--parser.rb-idio.html-12"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table><p id="p23">Again, skip the stop words, peek ahead, and decide if the sentence is correct based on what's there.  In the <tt class="docutils literal">parse_object</tt> function though we need to handle both "noun" and "direction" words as possible objects.  Subjects are then similar again, but since we want to handle the implied "player" noun, we have to use <tt class="docutils literal">peek</tt>:</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">def</span> <span class="nf">parse_subject</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a>    <span class="n">skip</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'stop'</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-3"></a>    <span class="n">next_word</span> <span class="o">=</span> <span class="n">peek</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-4"></a>
+<a name="ruby--ex48--parser.rb-idio.html-5"></a>    <span class="k">if</span> <span class="n">next_word</span> <span class="o">==</span> <span class="s1">'noun'</span>
+<a name="ruby--ex48--parser.rb-idio.html-6"></a>        <span class="k">return</span> <span class="n">match</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="s1">'noun'</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-7"></a>    <span class="k">elsif</span> <span class="n">next_word</span> <span class="o">==</span> <span class="s1">'verb'</span>
+<a name="ruby--ex48--parser.rb-idio.html-8"></a>        <span class="k">return</span> <span class="o">[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'player'</span><span class="o">]</span>
+<a name="ruby--ex48--parser.rb-idio.html-9"></a>    <span class="k">else</span>
+<a name="ruby--ex48--parser.rb-idio.html-10"></a>        <span class="k">raise</span> <span class="no">ParserError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"Expected a verb next."</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-11"></a>    <span class="k">end</span>
+<a name="ruby--ex48--parser.rb-idio.html-12"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table><p id="p24">With that all out of the way and ready, our final <tt class="docutils literal">parse_sentence</tt> function is very simple:</p>
+<table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="ruby--ex48--parser.rb-idio.html-1"></a><span class="k">def</span> <span class="nf">parse_sentence</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-2"></a>    <span class="n">subj</span> <span class="o">=</span> <span class="n">parse_subject</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-3"></a>    <span class="n">verb</span> <span class="o">=</span> <span class="n">parse_verb</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-4"></a>    <span class="n">obj</span> <span class="o">=</span> <span class="n">parse_object</span><span class="p">(</span><span class="n">word_list</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-5"></a>
+<a name="ruby--ex48--parser.rb-idio.html-6"></a>    <span class="k">return</span> <span class="no">Sentence</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">subj</span><span class="p">,</span> <span class="n">verb</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+<a name="ruby--ex48--parser.rb-idio.html-7"></a><span class="k">end</span>
+</pre></div>
+</td></tr></tbody></table></div>
+<div class="section" id="playing-with-the-parser">
+<h1>Playing With The Parser</h1>
+<p id="p25">To see how this works, you can play with it like this:</p>
+<div class="highlight"><pre><span></span><a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-1"></a><span class="gp">&gt;&gt; </span><span class="nb">require</span> <span class="s1">'./ex48/parser.rb'</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-2"></a><span class="go">=&gt; true</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-3"></a><span class="gp">&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">parse_sentence</span><span class="p">(</span><span class="o">[[</span><span class="s1">'verb'</span><span class="p">,</span> <span class="s1">'run'</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">'direction'</span><span class="p">,</span> <span class="s1">'north'</span><span class="o">]]</span><span class="p">)</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-4"></a><span class="go">=&gt; #&lt;Sentence:0x007fbcd2272e00 @subject="player", @verb="run", @object="north"&gt;</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-5"></a><span class="gp">&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">subject</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-6"></a><span class="go">=&gt; "player"</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-7"></a><span class="gp">&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">verb</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-8"></a><span class="go">=&gt; "run"</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-9"></a><span class="gp">&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">object</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-10"></a><span class="go">=&gt; "north"</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-11"></a><span class="gp">&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">parse_sentence</span><span class="p">(</span><span class="o">[[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'bear'</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">'verb'</span><span class="p">,</span> <span class="s1">'eat'</span><span class="o">]</span><span class="p">,</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-12"></a><span class="gp">?&gt; </span>                   <span class="o">[</span><span class="s1">'stop'</span><span class="p">,</span> <span class="s1">'the'</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s1">'noun'</span><span class="p">,</span> <span class="s1">'honey'</span><span class="o">]]</span><span class="p">)</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-13"></a><span class="go">=&gt; #&lt;Sentence:0x007fbcd1957b18 @subject="bear", @verb="eat", @object="honey"&gt;</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-14"></a><span class="gp">&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">subject</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-15"></a><span class="go">=&gt; "bear"</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-16"></a><span class="gp">&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">verb</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-17"></a><span class="go">=&gt; "eat"</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-18"></a><span class="gp">&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">object</span>
+<a name="ruby--ex49a_rbcon.rb-idio-irb-pyg.html-19"></a><span class="go">=&gt; "honey"</span>
+</pre></div><p id="p26">Try to map sentences to the correct pairings in a sentence.  For example, how would you say, "the bear run south?"</p>
+</div>
+<div class="section" id="what-you-should-test">
+<h1>What You Should Test</h1>
+<p id="p27">For Exercise 49, write a complete test that confirms everything in this code is working.  Put the test in <tt class="docutils literal">tests/test_parser.rb</tt> similar to the test file from the last exercise. That includes making exceptions happen by giving the parser bad sentences.</p>
+<p id="p28">Check for an exception by using the function <tt class="docutils literal">assert_raise</tt> from the <tt class="docutils literal"><span class="pre">Test::Unit</span></tt> documentation.  Learn how to use this so you can write a test that is <em>expected</em> to fail, which is very important in testing.  Learn about this function (and others) by reading the Test::Unit documentation.</p>
+<p id="p29">When you are done, you should know how this bit of code works and how to write a test for other people's code even if they do not want you to.  Trust me, it's a very handy skill to have.</p>
+</div>
+<div class="section" id="study-drills">
+<h1>Study Drills</h1>
+<ol class="arabic simple">
+<li>Change the <tt class="docutils literal">parse_</tt> methods and try to put them into a class rather than be just methods.  Which design do you like better?</li>
+<li>Make the parser more error-resistant so that you can avoid annoying your users if they type words your lexicon doesn't understand.</li>
+<li>Improve the grammar by handling more things like numbers.</li>
+<li>Think about how you might use this Sentence class in your game to do more fun things with a user's input.</li>
+</ol>
+</div>
+<div class="section" id="common-student-questions">
+<h1>Common Student Questions</h1>
+<dl class="docutils">
+<dt>I can't seem to make <tt class="docutils literal">assert_raise</tt> work right.</dt>
+<dd>Look at the example in the Ruby Documentation at <a class="reference external" href="http://www.ruby-doc.org/stdlib-2.1.2/libdoc/test/unit/rdoc/Test/Unit/Assertions.html#method-i-assert_raise">http://www.ruby-doc.org/stdlib-2.1.2/libdoc/test/unit/rdoc/Test/Unit/Assertions.html#method-i-assert_raise</a></dd>
+</dl>
+</div>
+            <!-- RST ENDS -->
+        </div>
+
+<div class="row between-xs center-xs middle-xs bare" id="notice" style="background-color: #eee">
+    <div class="col-xs-11 col-sm-10 col-md-9 col-lg-8">
+        <h1>30% Off Learn Ruby The Hard Way</h1>
+        <p>Looking to learn Ruby? You can get <a href="http://bit.ly/buylrthw">Learn Ruby The Hard Way</a> at 30% off for a limited time using coupon code <em>RUBY30</em>.</p>
+
+    </div>
+</div>
+    </div>
+
+      <div class="row center-xs" id="buy">
+    <div class="text-center col-xs-10 col-sm-5 col-md-4">
+      <h2 class="section-title__small">Buy DRM-Free</h2>
+      <p id="p30">
+        When you buy directly from the author, Zed A. Shaw, you'll get a professional
+        quality PDF and  hours of HD Video, all DRM-free and yours to download
+        and use as you see fit.
+      </p>
+
+      <p class="price-block" id="p31">
+      <span class="currency"><span class="prefix">$</span>29.<span class="suffix">99</span></span>
+      </p>
+
+      <a href="https://shop.learncodethehardway.org/access/buy/5/" class="btn btn-primary btn-full">Buy Directly From The Author</a>
+      
+      <p class="text-left btn-subtext" id="p32">
+        <small>Or, you can <a href="https://learnrubythehardway.org/book/">read Learn Ruby the Hard Way for free</a> right here, video lectures not included.</small>
+      </p>
+      
+    </div>
+    <div class="text-center col-xs-10 col-sm-5 col-md-4 col-sm-offset-1">
+      
+      <h2 class="section-title__small">Other Buying Options</h2>
+      <a href="http://bit.ly/amznlrthw" class="btn btn-secondary btn-full">Buy on Amazon</a>
+      <a href="http://bit.ly/informitlrthw" class="btn btn-secondary btn-full">Buy a hard copy from the Publisher</a>
+      <a href="http://bit.ly/bnlrthw" class="btn btn-secondary btn-full">Buy a hard copy from Barnes &amp; Noble</a>
+      
+    </div>
+  </div>
+
+  <div class="row center-xs" id="video_holder" style="display: none">
+      <div class="col-xs">
+          <div data-paydiv_product="5" id="paydiv"></div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+    </main>
+
+  </div>
+
+  <div class="row dark bottom-nav">
+    <div class="col-xs text-left">
+      <a href="https://learnrubythehardway.org/book/ex48.html" class="prev" id="prev_link"><i class="icon-arrow-67"></i> <i class="icon icon-arrow-left"></i> Previous <span class="hide-xs show-sm-inline">Lesson</span></a>
+    </div>
+    <div class="col-xs text-right"><a href="https://learnrubythehardway.org/book/ex50.html" class="next" id="next_link">Next <span class="hide-xs show-sm-inline">Lesson</span> <i class="icon icon-arrow-right"></i></a>
+      </div>
+    </div>
+  
+
+<footer class="footer">
+  <div class="row center-xs">
+
+  <div class="col-xs-11 col-sm-6 col-md-5 col-lg-5">
+    <ul class="nav nav-inline">
+      <li><h4><a href="https://learnrubythehardway.org/">Home</a></h4></li>
+      <li><h4><a href="https://learncodethehardway.org/about/">About</a></h4></li>
+      <li><h4><a href="https://learncodethehardway.org/contact/">Contact</a></h4></li>
+    </ul>
+    <div class="copyright text-left">
+      <small class="text-muted">© 2016 Zed A. Shaw</small>
+    </div>
+  </div>
+  <div class="col-xs-11 col-sm-4 col-md-4 col-lg-3">
+    <div class="social-media">
+      <div class="classy-container">
+        <a href="https://twitter.com/lzsthw" class="socicon-twitter"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</footer>
+<script async="" charset="utf-8" src="./LRHW-49_files/saved_resource" type="text/javascript"></script><script src="./LRHW-49_files/scripts.min.js"></script>
+
+<script src="./LRHW-49_files/jquery.js"></script>
+<script src="./LRHW-49_files/index.js"></script>
+<script src="./LRHW-49_files/jzed.js"></script>
+<script src="./LRHW-49_files/video.js"></script>
+<link rel="stylesheet" href="./LRHW-49_files/video-js.css">
+<script src="./LRHW-49_files/paydiv.js"></script>
+<script src="./LRHW-49_files/app.js"></script>
+<script src="./LRHW-49_files/littools.js"></script>
+<!-- Start of helpthw Zendesk Widget script -->
+<iframe src="javascript:false" title="" style="display: none;" src="./LRHW-49_files/saved_resource(2).html"></iframe><script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","helpthw.zendesk.com");
+/*]]>*/</script>
+<!-- End of helpthw Zendesk Widget script -->
+
+
+
+<div id="ghostery-purple-box" class="ghostery-bottom ghostery-right ghostery-collapsed"><div id="ghostery-box"><div id="ghostery-count" style="background: none; color: rgb(255, 255, 255);">2</div><div id="ghostery-pb-icons-container"><span id="ghostery-breaking-tracker" class="ghostery-pb-tracker" title="Broken Page Trackers" style="background: url(&quot;chrome-extension://mlomiejdfkolichcflejclcbmpeaniij/app/images/purple_box/breaking-icon.svg&quot;); opacity: 0.5;"></span><span id="ghostery-slow-tracker" class="ghostery-pb-tracker" title="Slow Trackers" style="background: url(&quot;chrome-extension://mlomiejdfkolichcflejclcbmpeaniij/app/images/purple_box/slow-icon.svg&quot;); opacity: 0.5;"></span><span id="ghostery-non-secure-tracker" class="ghostery-pb-tracker" title="Non-secure Trackers" style="background: url(&quot;chrome-extension://mlomiejdfkolichcflejclcbmpeaniij/app/images/purple_box/non-secure-icon.svg&quot;); opacity: 0.5;"></span></div><div id="ghostery-title">Trackers</div><div id="ghostery-minimize"><span id="ghostery-minimize-icon"></span></div><span id="ghostery-close" style="background: url(&quot;chrome-extension://mlomiejdfkolichcflejclcbmpeaniij/app/images/purple_box/collapse.svg&quot;);"></span></div><div id="ghostery-pb-background"><div id="ghostery-trackerList"><div class="ghostery-trackerContainer"><span id="ghostery-no-tracker" class="ghostery-pb-tracker-list"></span><span class="ghostery-tracker">Zendesk</span></div><div class="ghostery-trackerContainer"><span id="ghostery-no-tracker" class="ghostery-pb-tracker-list"></span><span class="ghostery-tracker">Zopim</span></div></div></div></div><div><iframe data-reactroot="" id="ticketSubmissionForm" class="zEWidget-ticketSubmissionForm" style="border: none; background: transparent; z-index: 999999; transform: translateZ(0px); position: fixed; opacity: 0; right: 0px; bottom: 0px; width: 357px; margin-left: 15px; margin-right: 15px; margin-top: 0px; height: 476px; transition-property: none; transition-timing-function: unset; top: -9999px;" src="./LRHW-49_files/saved_resource(3).html"></iframe></div><script>
+    (function(d,s){var z=$zopim,$=z.s= d.createElement(s),e=d.getElementsByTagName(s)[0];
+    $.async=!0;$.setAttribute('charset','utf-8');
+    $.src='https://v2.zopim.com/?43bhyAkp3pYCNphTsHWmY6JMyxmxLXDu';
+    z.t=+new Date;$. type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+  </script><div><iframe data-reactroot="" id="launcher" class="zEWidget-launcher zEWidget-launcher--active" style="border: none; background: transparent; z-index: 999998; transform: translateZ(0px); position: fixed; opacity: 1; right: 0px; bottom: 0px; width: 112px; height: 47px; margin: 10px 20px; transition-property: all; transition-timing-function: ease-out; transition-duration: 300ms;" src="./LRHW-49_files/saved_resource(4).html"></iframe></div><div><iframe data-reactroot="" id="nps" class="zEWidget-nps" style="border: none; background: transparent; z-index: 2147483647; transform: translateZ(0px); position: fixed; opacity: 0; right: 0px; bottom: 0px; left: 50%; margin-left: -310px; margin-bottom: 15px; width: 640px; margin-top: 0px; height: 177px; transition-property: none; transition-timing-function: unset; top: -9999px;" src="./LRHW-49_files/saved_resource(5).html"></iframe></div><div><iframe data-reactroot="" id="ipm" class="zEWidget-ipm" style="border: none; background: transparent; z-index: 2147483647; transform: translateZ(0px); position: fixed; opacity: 0; right: 0px; top: -230px; margin-right: 15px; margin-top: 0px; height: 180px; width: 395px; transition-property: none; transition-timing-function: unset;" src="./LRHW-49_files/saved_resource(6).html"></iframe></div><style></style></body></html>
